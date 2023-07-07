@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<host-apdu-service xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:description="@string/RES_2131558431" android:requireDeviceUnlock="false" android:apduServiceBanner="@drawable/ic_launcher_background">
+    <aid-group android:description="@string/RES_2131558520" android:category="payment">
+        <aid-filter android:name="325041592E5359532E4444463031" android:description="@string/RES_2131558523"/>
+        <aid-filter android:name="A0000000031010" android:description="@string/RES_2131558424"/>
+        <aid-filter android:name="A0000000980840" android:description="@string/RES_2131558423"/>
+        <aid-filter android:name="A000000003101001" android:description="@string/RES_2131558425"/>
+        <aid-filter android:name="A000000003101002" android:description="@string/RES_2131558426"/>
+        <aid-filter android:name="A0000000032010" android:description="@string/RES_2131558429"/>
+        <aid-filter android:name="A0000000033010" android:description="@string/RES_2131558409"/>
+        <aid-filter android:name="A0000000038010" android:description="@string/RES_2131558412"/>
+        <aid-filter android:name="A0000000031010034761739000000000" android:description="@string/RES_2131558427"/>
+    </aid-group>
+</host-apdu-service>
