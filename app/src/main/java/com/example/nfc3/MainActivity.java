@@ -1,5 +1,7 @@
 package com.example.nfc3;
 
+import static com.example.nfc3.MyHostApduService.getResponse;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +10,7 @@ import android.content.pm.ResolveInfo;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
             // Add your logic here
             Toast.makeText(this, "Your app is recognized as a contactless payment app", Toast.LENGTH_SHORT).show();
         }
+
     }
+
 
     private boolean checkNfcEnabled() {
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
