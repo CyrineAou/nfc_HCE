@@ -1,5 +1,6 @@
 package com.example.nfc3;
 
+import static com.example.nfc3.BERTLVConstructor.generateTLV;
 import static com.example.nfc3.MyHostApduService.getResponse;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,9 @@ import android.provider.Settings;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
     private static final String PAYMENT_CATEGORY = "android.intent.category.DEFAULT";
     private static final String PAYMENT_ACTION = "android.intent.action.PAY";
@@ -23,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        testGenerateTLV();
+
+
     }
 
     @Override
@@ -69,6 +77,20 @@ public class MainActivity extends AppCompatActivity {
         ResolveInfo resolveInfo = packageManager.resolveActivity(paymentIntent, PackageManager.MATCH_DEFAULT_ONLY);
         return resolveInfo != null && resolveInfo.activityInfo.packageName.equals(getPackageName());
     }
+
+    private void testGenerateTLV() {
+        // Create a sample map of TLV data
+        Map<String, String> tlvMap = new HashMap<>();
+        tlvMap.put("84", "325041592E5359532E4444463031");
+        tlvMap.put("9f47", "7081B89F4681B0BD23BD0AB91EDCD2EB07D61B94D1DDA60219552672A42801DD7B16B43BC1A5A6FDD19C9ED342BCE74AA337C3E7B1FD06EAA01D3E8B43397BCAD8491816D28961F248259C783F205A7441E6A5FD576F40BE4E091EBE69D37B2D71A340C6778D94F582742F22980495E31722D64A3AB38CB5658451E237E89806E2D2B0DCCEE0A37E722F1DEC18044DA826F8BA7A38AE6C9F1F8A569084B95280187100A62877FDBCE8F7C6D7B7126662BC665884653E179F4701039000");
+        tlvMap.put("9f46", "BD23BD0AB91EDCD2EB07D61B94D1DDA60219552672A42801DD7B16B43BC1A5A6FDD19C9ED342BCE74AA337C3E7B1FD06EAA01D3E8B43397BCAD8491816D28961F248259C783F205A7441E6A5FD576F40BE4E091EBE69D37B2D71A340C6778D94F582742F22980495E31722D64A3AB38CB5658451E237E89806E2D2B0DCCEE0A37E722F1DEC18044DA826F8BA7A38AE6C9F1F8A569084B95280187100A62877FDBCE8F7C6D7B7126662BC665884653E17BD23BD0AB91EDCD2EB07D61B94D1DDA60219552672A42801DD7B16B43BC1A5A6FDD19C9ED342BCE74AA337C3E7B1FD06EAA01D3E8B43397BCAD8491816D28961F248259C783F205A7441E6A5FD576F40BE4E091EBE69D37B2D71A340C6778D94F582742F22980495E31722D64A3AB38CB5658451E237E89806E2D2B0DCCEE0A37E722F1DEC18044DA826F8BA7A38AE6C9F1F8A569084B95280187100A62877FDBCE8F7C6D7B7126662BC665884653E17");
+        // Call the generateTLV function
+        String tlvResult = generateTLV(tlvMap);
+        // Print the result
+        System.out.println("TLV Result: " + tlvResult);
+    }
+
+
 
 
 
